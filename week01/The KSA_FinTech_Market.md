@@ -7,7 +7,7 @@
 
 2. Describe how you think Saudi FinTech companies can support financial inclusion in the emerging world.  Provide links to research that you located to back up your suggestions where possible.
 
-    a. In Saudi Arabia, the individual is encouraged to open a bank account, and the bank cannot    require financial charges or depositing funds to open bank accounts([link](https://www.sama.gov.sa/    en-US/News/Pages/news28042019.aspx))
+    a. In Saudi Arabia, the individual is encouraged to open a bank account, and the bank cannot    require financial charges or depositing funds to open bank accounts([link](https://www.sama.gov.sa/en-US/News/Pages/news28042019.aspx))
 
 3. Identify emerging technologies (e.g., LEO satellites, quantum computers, AI, etc.) and describe how you think they might transform FinTech solutions in the future. Provide links to research that you located that back up your suggestions.
 
