@@ -179,5 +179,4 @@ class AccountManager():
             'fees':self.fees
         },index=self.dates)
 
-
-        return {"result_df":pandas.concat([self.trades_df,self.final_df],axis=1),"broker_orders":pandas.concat(self.order_history)}
+        return {"result_df":pandas.concat([self.trades_df, self.final_df],axis=1),"broker_orders":pandas.concat(self.order_history)}
