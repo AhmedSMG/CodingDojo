@@ -44,12 +44,12 @@ class AccountManager():
         fees = cost
         position_change = size
 
-        if size>0:
+        if size > 0:
             trade_type ='BUY'
         else:
             trade_type ='SELL'
 
-        return {'cash_change':cash_change,
+        return {'ash_change':cash_change,
                 'fees':fees,
                 'position_change':position_change,
                 'symbol':self.symbol,
@@ -110,7 +110,7 @@ class AccountManager():
             position_change = 0
             fees = 0
 
-            if self.trades_df.loc[current_date]['trades'] != 'None':
+            if self.trades_df.loc[current_date]['Signal'] != 'None':
 
                 if self.position != 0:
                     res = self.close_position(current_date)
@@ -124,7 +124,7 @@ class AccountManager():
                     self.order_history.append(res['order_df'])
 
 
-                trade_direction = self.trades_df.loc[current_date]['trades']
+                trade_direction = self.trades_df.loc[current_date]['Signal']
 
                 res = self.open_position(direction=trade_direction,
                                          date=current_date)
@@ -158,7 +158,7 @@ class AccountManager():
 
         if self.position != 0:
             res = self.close_position(current_date,field='Close')
-            self.trades_df.iloc[-1,self.trades_df.columns.get_loc('trades')] = ('Long' if res['position_change']>0 else "Short")
+            self.trades_df.iloc[-1,self.trades_df.columns.get_loc('Signal')] = ('Long' if res['position_change']>0 else "Short")
             self.positions[-1] = 0
 
             self.position_change[-1] += res['position_change']
