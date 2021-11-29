@@ -40,5 +40,5 @@ We need a Classification model that able to perform well under unbalanced data a
 
 - Hessah AlMatrudi
 
-- Ahmad AlGazal
+- Ahmed AlGazal
 
