@@ -38,8 +38,8 @@ class BlockChain:
         print("Block added successfully to chain")
         return True
 
-    def add_transaction(self, transactions) -> None:
-        self.transactions.append(transactions)
+    def add_transaction(self, transactions: List[Transaction]) -> None:
+        self.transactions.extend(transactions)
 
     def mine(self) -> bool:
         if len(self.transactions) < 1:
@@ -48,6 +48,7 @@ class BlockChain:
 
         last_block = self.chain[-1]
         block = Block(transactions=self.transactions,
+                      difficulty=self.difficulty,
                       previous_hash=last_block.compute_hash())
 
         block = self.proof_of_work(block)
@@ -62,15 +63,16 @@ class BlockChain:
     def to_json(self) -> str:
         out = []
         for index, block in enumerate(self.chain):
-            out = {"hash": block.compute_hash(),
+            temp = {"hash": block.compute_hash(),
                     "height": index,
                     "version": block.version,
-                    "tx" : [x.__dict__ for x in self.transactions],
+                    "transactions" : [x.__dict__ for x in block.transactions],
                     "time": block.timestamp,
                     "nonce": block.nonce,
                     "difficulty": block.difficulty,
                     "previous_hash": block.previous_hash,
                     }
+            out.append(temp)
         return json.dumps(out)
 
 
