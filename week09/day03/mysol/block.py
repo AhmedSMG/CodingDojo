@@ -42,7 +42,9 @@ class Block:
         return hashlib.sha256(temp_hash.encode()).hexdigest()
 
     def to_json(self) -> str:
-        return json.dumps(self.__dict__)
+        out = self.__dict__.copy()
+        out["transactions"] = [x.__dict__ for x in self.transactions]
+        return json.dumps(out)
 
     def __repr__(self) -> str:
         return "Block(" +\
@@ -59,12 +61,27 @@ class Block:
 
 
 def main():
-    gen = Block.create_gensis_block()
-    print(gen)
-    print(gen.to_json())
-    x = gen.compute_hash()
-    print(x)
+    #gen = Block.create_gensis_block()
+    #print(gen)
+    #print(gen.to_json())
+    #x = gen.compute_hash()
+    #print(x)
+    
+    t1 = Transaction(from_address="1234",
+                     to_address="9876",
+                     amount=0.123)
 
+    t2 = Transaction(from_address="5456",
+                     to_address="85643",
+                     amount=34562.21)
+
+    t3 = Transaction(from_address="1234",
+                     to_address="9393",
+                     amount=10.3)
+
+    x = Block(previous_hash="0", transactions=[t1, t2, t3])
+    
+    print(x.to_json())
 
 if __name__ == "__main__":
     main()

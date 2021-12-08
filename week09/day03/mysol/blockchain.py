@@ -62,12 +62,15 @@ class BlockChain:
     def to_json(self) -> str:
         out = []
         for index, block in enumerate(self.chain):
-            print(block)
-            temp = {"hash": block.compute_hash(),
-                    "height": index}
-            temp.update(block.__dict__)
-            out.append(temp)
-
+            out = {"hash": block.compute_hash(),
+                    "height": index,
+                    "version": block.version,
+                    "tx" : [x.__dict__ for x in self.transactions],
+                    "time": block.timestamp,
+                    "nonce": block.nonce,
+                    "difficulty": block.difficulty,
+                    "previous_hash": block.previous_hash,
+                    }
         return json.dumps(out)
 
 
