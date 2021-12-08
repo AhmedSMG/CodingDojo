@@ -11,12 +11,17 @@ class Transaction:
         self.from_address = from_address
         self.to_address = to_address
         
-    def to_json(self):
+    def to_json(self) -> str:
         return json.dumps(self.__dict__)
 
         
     def __repr__(self) -> str:
-        return str(self.__dict__)
+        return "Transaction(" +\
+            f"version_no={self.version_no}, " +\
+            f"from_address={self.from_address}, " +\
+            f"to_address={self.to_address}" +\
+            ")" 
+        
     
 
 def main():

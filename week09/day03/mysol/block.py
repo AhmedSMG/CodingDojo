@@ -1,8 +1,5 @@
 from transaction import Transaction
 
-
-from transaction import Transaction
-
 from typing import List, Set, Dict, Tuple, Optional
 import time
 import json
@@ -36,22 +33,37 @@ class Block:
         # Block Body
         self.transactions = transactions
         
-    def compute_hash(self):
-        block_header = " ".join([self.previous_hash,
-                                 self.difficulty,
-                                 self.nonce,
-                                 self.version])
+    def compute_hash(self) -> str:
+        header_keys = ["version", "previous_hash", "timestamp", "difficulty", "nonce"]
+        block_header = str({k: self.__dict__[k] for k in header_keys})
+        
         # Hash Twice the header
-        return hashlib.sha256(hashlib.sha256(block_header.encode).hexdigest()).hexdigest()
+        temp_hash = hashlib.sha256(block_header.encode()).hexdigest()
+        return hashlib.sha256(temp_hash.encode()).hexdigest()
     
-    def to_json(self):
+    def to_json(self) -> str:
         return json.dumps(self.__dict__)
     
+    
+    def __repr__(self) -> str:
+        return "Block(" +\
+            f"version={self.version}, " +\
+            f"timestamp={self.timestamp}, " +\
+            f"difficulty={self.difficulty}, " +\
+            f"nonce={self.nonce}, " +\
+            f"transactions={self.transactions}" +\
+            ")" 
+            
     @staticmethod
     def create_gensis_block():
         return Block(previous_hash="0")
     
 def main():
-    pass
+    gen = Block.create_gensis_block()
+    print(gen)
+    print(gen.to_json())
+    x = gen.compute_hash()
+    print(x)
+
 if __name__ == "__main__":
     main()
