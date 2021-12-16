@@ -12,17 +12,15 @@ contract Surprise {
     }
 }
 
-contract BankContract {
+contract Bank {
 
+    address owner;
+    uint256 balance;
     constructor () {
-        bankAccount = BankAccount({bankAddress: msg.sender, balance: msg.sender.balance});
+        owner = msg.sender;
+        balance = 0;
     }
 
-
-    struct BankAccount {
-        address bankAddress;
-        uint256 balance;
-    }
 
     struct User{
         string name;
@@ -31,8 +29,6 @@ contract BankContract {
         address wallet;
     }
     
-
-    BankAccount private bankAccount;
 
     mapping (address => User) users;
 
@@ -47,37 +43,37 @@ contract BankContract {
     function deposit() external payable {
         require(msg.value > 0, "Deposit amount is 0!");
         users[msg.sender].balance += msg.value;
-        payable(bankAccount.bankAddress).transfer(msg.value);
+        balance += msg.value;
     }
 
-    function transfer(address _to) external payable {
-        require(msg.value > 0, "Transfer amount is 0!");
-        require(users[msg.sender].balance >= msg.value, "No sufficient fund!");
-        require((users[_to].id > 0), "Destination account DOESN'T exist!");
+    function transfer(address _to, uint256 _amount) external {
+        require(_amount > 0, "Transfer amount is 0!");
+        require(users[msg.sender].balance >= _amount, "No sufficient fund!");
+        require(users[_to].id > 0, "Destination account DOESN'T exist!");
 
-        users[msg.sender].balance -= msg.value;
-        users[_to].balance += msg.value;
-        payable(_to).transfer(msg.value);
+        users[msg.sender].balance -= _amount;
+        users[_to].balance += _amount;
     }
 
     function withdraw(uint256 _amount) external {
         require(users[msg.sender].balance >= _amount, "Not sufficient fund!");
         users[msg.sender].balance -= _amount;
-        //payable(msg.sender).transfer(_amount);
+        balance -= _amount;
+        payable(msg.sender).transfer(_amount);
     }
 
 
 
-    function getBankInfo() external view returns (address, uint256) {
-        require(msg.sender == bankAccount.bankAddress, "NOT Admin");
-        return (bankAccount.bankAddress,
-                bankAccount.balance);
+    function getBankInfo() external view returns (uint256) {
+        require(msg.sender == owner, "NOT Admin");
+        return balance;
     }
 
     function getUserInfo() external view returns(string memory,
                                                  uint,
                                                  uint256,
                                                  address){
+        require(users[msg.sender].id > 0, "Error User Doesn't Exist!");
         return (users[msg.sender].name,
                 users[msg.sender].id,
                 users[msg.sender].balance,
