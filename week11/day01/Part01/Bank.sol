@@ -87,7 +87,4 @@ contract Bank{
         return(idCounter,
                bankBalance);
     }
-
-
-
 }
