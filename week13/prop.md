@@ -23,16 +23,16 @@ Hussein Buhligah — Reem AlQhatani — Afrah AlHarbi — Ahmed ALGhazal
 
 
 ## Goals:
-> 1. Get the historical data of the market(We assume the market only contains the 500 Companies in the S&P500)
-> 2.  Clean the data
-> 3. Test two optimization methods 
->     1. Based on S&P500 index weights
->     2. Build based on diversifying the sector
->     3. Equal Weight
->     4. Performing K-means Clustering
->     5. Maximize Sharpe ratio
->     6. Minimize the variance
->     7. Risk Parity
+> 1. Get the historical data of the market
+> 2. Clean the data
+> 3. Test different optimization methods 
+>     1. Equally weighted
+>     2. Top 5 Market Captial security from each sector
+>     3. Maximize Sharpe ratio
+>     4. Minimize the variance
+>     5. Risk Parity
+>     6. K-means Clustering
+
 > 4. Backtesting
 
 
