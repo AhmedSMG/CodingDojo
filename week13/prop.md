@@ -29,7 +29,7 @@ Hussein Buhligah — Reem AlQhatani — Afrah AlHarbi — Ahmed ALGhazal
 > 2. Clean the data
 >   a. Drop securities where listed after 2005 or data not available
 >   b. Drop records where there is missing data
-> 3. Test different optimization methods(we may use Riskfolio-Lib)
+> 3. Test different optimization methods(we may use Riskfolio-Lib & Scipy)
 >     1. Equally weighted
 >     2. Top 5 Market Captial security from each sector
 >     3. Maximize Sharpe ratio
@@ -37,13 +37,12 @@ Hussein Buhligah — Reem AlQhatani — Afrah AlHarbi — Ahmed ALGhazal
 >     5. Risk Parity
 >     6. K-means Clustering
 > 4. Different metrics will be used to evaluate the portfolio performance
->   a. Volatility
->   b. Sharpe Ratio
->   c. Absolute Return
->   d. CAGR
->   e. Sortino ratio
->   f. Maximum drawdown
-
+>    1. Volatility 
+>    2. Sharpe Ratio
+>    3. Absolute Return
+>    4. CAGR
+>    5. Sortino ratio
+>    6. Maximum drawdown
 
 # Presentation Time Estimate:
 
