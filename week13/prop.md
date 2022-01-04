@@ -24,16 +24,25 @@ Hussein Buhligah — Reem AlQhatani — Afrah AlHarbi — Ahmed ALGhazal
 
 ## Goals:
 > 1. Get the historical data of the market
+>   a. Collect all available tickets listed on the Nasdaq
+>   b. Download historical data from yfinance library
 > 2. Clean the data
-> 3. Test different optimization methods 
+>   a. Drop securities where listed after 2005 or data not available
+>   b. Drop records where there is missing data
+> 3. Test different optimization methods(we may use Riskfolio-Lib)
 >     1. Equally weighted
 >     2. Top 5 Market Captial security from each sector
 >     3. Maximize Sharpe ratio
 >     4. Minimize the variance
 >     5. Risk Parity
 >     6. K-means Clustering
-
-> 4. Backtesting
+> 4. Different metrics will be used to evaluate the portfolio performance
+>   a. Volatility
+>   b. Sharpe Ratio
+>   c. Absolute Return
+>   d. CAGR
+>   e. Sortino ratio
+>   f. Maximum drawdown
 
 
 # Presentation Time Estimate:
